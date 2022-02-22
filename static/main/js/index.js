@@ -1,8 +1,6 @@
-const ethereumButton = document.querySelector('.enableEthereumButton');
-const fundButton = document.querySelector('.fund');
 const showEth = document.querySelector('.showEth');
-const showAccount = document.querySelector('.showAccount');
-const withdrawalButton = document.querySelector('.withdrawalButton');
+const eth_amount = document.getElementById('Eth_amount');
+const eth_withdrawal = document.getElementById('Eth_withdrawal');
 
 var web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 
@@ -60,20 +58,6 @@ var myContract = new web3.eth.Contract([
 	}
 ],'0x4887F776FC5A19A0E5c4276B1b6d5a378cF7e285');
 
-showFunds();
-
-ethereumButton.addEventListener('click', () => {
-  getAccount();
-});
-
-fundButton.addEventListener('click', () => {
-  fund();
-});
-
-withdrawalButton.addEventListener('click', () => {
-  withdrawal();
-});
-
 async function showFunds(){
   myContract.methods.getBalance().call().then(function(number) {
     showEth.innerHTML = number;
@@ -83,11 +67,10 @@ async function showFunds(){
 async function getAccount() {
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
-  showAccount.innerHTML = account;
 }
 
 async function fund(){
-  fundvalue = fundForm.one.value;
+  fundvalue = eth_amount.value;
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
 
@@ -95,7 +78,7 @@ async function fund(){
 }
 
 async function withdrawal(){
-  withdrawalvalue = withdrawalForm.one.value;
+  withdrawalvalue = eth_withdrawal.value;
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
 
