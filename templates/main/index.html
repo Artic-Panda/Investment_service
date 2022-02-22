@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/index.css'%}" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script async type="text/javascript" src={% static 'main/js/index.js' %}></script>
+    <style type="text/css">
+      body {
+          background-image: url("{% static 'main/img/gra.jpg' %}");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-attachment: fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+    </style>
+    <title></title>
+  </head>
+  <body>
+    <h1>Investing</h1>
+    <button class="enableEthereumButton">Connect to MetaMask</button>
+    <h2>Account: <span class="showAccount"></span></h2>
+    <h2>Сontract balance: <span class="showEth"></span></h2>
+    <form id="fundForm" onsubmit="fund();return false">
+       Fund contract(enter)<input name="one" value="1"><br>
+    </form>
+    <button class="fund">Fund contract</button><br>
+    <form id="withdrawalForm" onsubmit="withdrawal();return false">
+       Withdrawal Eth(enter)<input name="one" value="1"><br>
+    </form>
+    <button class="withdrawalButton">Withdrawal Eth</button>
+
+  </body>
+</html>
